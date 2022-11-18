@@ -1,15 +1,25 @@
-import { accountRoutes } from './src/routes/accountroutes';
-import addUserRoutes from './src/routes/userRoutes'
-import addAccountUser from './src/routes/accountUserRouter'
-import { addApplicationRoutes } from './src/routes/applicationRoutes';
-import addLogRoutes from './src/routes/logsRouter'
-import { logHttpRequest } from './middleware';
-const app = new Zode();
-app.use(logHttpRequest)
-addAccountUser(app);
-addUserRoutes(app);
-accountRoutes(app);
-addApplicationRoutes(app);
-addLogRoutes(app)
-console.log(`app http server started on port ${process.env.HTTP_PORT}`)
-export default app.start();
+const koa = require("koa")
+const koaRouter = require("koa-router")
+const app = new koa();
+const router = new koaRouter
+import fetchUser from "./handler/userHandler"
+import { addUser } from "./handler/userHandler";
+router.get('/login',fetchUser)
+router.post('/user',addUser)
+
+//buyer
+router.get('/api/buyer/list-of-sellers')
+router.get('/api/buyer/seller-catalog/:seller_id')
+router.post('/api/buyer/create-order/:seller_id')
+
+//seller
+router.post('/api/seller/create-catalog')
+
+//order
+router.get('/api/seller/orders',)
+
+app.use(router.routes()).use(router.allowedMethods());
+
+app.listen(8000, ()=>{
+    console.log("listening to 8000 port ecom");
+})
