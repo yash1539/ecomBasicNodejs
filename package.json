@@ -1,0 +1,19 @@
+{
+  "name": "assignment_node",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yash1539/ecomBasicNodejs.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yash1539/ecomBasicNodejs/issues"
+  },
+  "homepage": "https://github.com/yash1539/ecomBasicNodejs#readme"
+}

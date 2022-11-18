@@ -1,0 +1,41 @@
+-- create database
+CREATE DATABASE ecom;
+
+--tables
+CREATE TABLE users(
+    id VARCHAR(100) PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    emailId VARCHAR(100) NOT NULL,
+    image VARCHAR(100) NOT NULL,
+    createdOn TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updatedOn TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+ALTER TABLE
+    users
+ADD
+    INDEX userEmail(email);
+
+CREATE TABLE accounts(
+    id VARCHAR(100) PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    createdBy VARCHAR(100) NOT NULL,
+    createdOn TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updatedOn TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (createdBy) REFERENCES users(id)
+);
+
+
+
+CREATE TABLE accountUsers(
+    userId VARCHAR(100),
+    accountId VARCHAR(100),
+    createdOn TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updatedOn TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    invitedBy VARCHAR(100),
+    FOREIGN KEY (userId) REFERENCES users(id),
+    FOREIGN KEY (invitedBy) REFERENCES users(id),
+    FOREIGN KEY (accountId) REFERENCES accounts(id),
+    PRIMARY KEY (userId, accountId)
+);
+
