@@ -2,12 +2,9 @@ const koa = require("koa")
 const koaRouter = require("koa-router")
 const app = new koa();
 const router = new koaRouter
-import { login } from "./handler/userHandler"
-import { addUser } from "./handler/userHandler";
+import { login,addUser } from "./handler/userHandler"
 import { auth } from "./middleware/auth";
-import { allSeller } from "./handler/sellerHandler";
-import { getSellerById } from "./handler/sellerHandler";
-import { getAllProductsById } from "./handler/sellerHandler";
+import { getAllProductsById,allOrder,addProducts,getSellerById,allSeller } from "./handler/sellerHandler";
 
 router.post('/login', auth, login)
 router.post('/user', addUser)
@@ -18,10 +15,10 @@ router.get('/api/buyer/seller-catalog/:seller_id',getSellerById)
 router.post('/api/buyer/create-order/:seller_id',getAllProductsById)
 
 //seller
-router.post('/api/seller/create-catalog')
+router.post('/api/seller/create-catalog',addProducts)
 
 //order
-router.get('/api/seller/orders',)
+router.get('/api/seller/orders',allOrder)
 
 app.use(router.routes()).use(router.allowedMethods());
 
