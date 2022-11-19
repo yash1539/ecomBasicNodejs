@@ -7,15 +7,14 @@ CREATE TABLE users(
     name VARCHAR(100) NOT NULL,
     password VARCHAR(100) NOT NULL,
     type VARCHAR(100) NOT NULL,
-    usertype VARCHAR(100) NOT NULL,
     createdOn TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updatedOn TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 
 CREATE TABLE catalogs(
-    buyerId VARCHAR(100) PRIMARY KEY,
-    FOREIGN KEY (buyerId) REFERENCES users(id),
+    catalogId VARCHAR(100) PRIMARY KEY,
+    FOREIGN KEY (catalogId) REFERENCES users(id),
 
 );
 
