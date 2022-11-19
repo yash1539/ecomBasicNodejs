@@ -1,2 +1,2 @@
 # ecomBasicNodejs
-# ecomBasicNodejs
+run with "node index.js"
